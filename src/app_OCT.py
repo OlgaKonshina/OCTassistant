@@ -14,16 +14,16 @@ class CustomViTForImageClassification(ViTForImageClassification):
 
 
 # Загрузка модели и feature extractor
-model_name = "/home/olga/Рабочий стол/Вкр/pythonProject/vit_model/pytorch_model.bin"
-config = AutoConfig.from_pretrained('/home/olga/Рабочий стол/Вкр/pythonProject/vit_model/config.json')
+model_name = "src/vit_model/config.json/pytorch_model.bin"
+config = AutoConfig.from_pretrained('src/vit_model/config.json')
 
 config.num_labels = 8
 model = CustomViTForImageClassification(config)
 feature_extractor = ViTImageProcessor.from_pretrained(
-    '/home/olga/Рабочий стол/Вкр/pythonProject/vit_model/preprocessor_config.json')
+    'src/vit_model/preprocessor_config.json')
 
 # Загрузка сохраненных весов
-model.load_state_dict(torch.load('/home/olga/Рабочий стол/Вкр/pythonProject/vit_model/vitalik.pth',
+model.load_state_dict(torch.load('src/vit_model/config.json/vitalik.pth',
                                  map_location=torch.device('cpu')))
 model.eval()
 
