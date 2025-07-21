@@ -27,7 +27,7 @@ model.load_state_dict(torch.load('src/vit_model/config.json/vitalik.pth',
                                  map_location=torch.device('cpu')))
 model.eval()
 
-df = pd.read_excel('/home/olga/Рабочий стол/Вкр/pythonProject/тест.xlsx')
+
 
 
 def deepseek_pred(promt):
@@ -36,7 +36,7 @@ def deepseek_pred(promt):
     response = client.chat.completions.create(
         model="deepseek-chat",  # определение модели
         messages=[
-            {"role": "system", "content": "You are a helpful assistant"},  
+            {"role": "system", "content": "ты врач-офтальмолог. Клинический случай: "},  
             {"role": "user", "content": promt},  
         ],
         stream=False  
